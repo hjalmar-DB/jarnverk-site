@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<script>
+(function(){
+  var h=location.hostname;
+  if(h==="jarnverktakar.is"||h==="www.jarnverktakar.is"||h==="www.jarnverk.is"){
+    location.replace("https://jarnverk.is"+location.pathname+location.search+location.hash);
+  }
+})();
+</script>
+<script>
+(function(){
+  var map={"#thjonusta":"/thjonusta/","#verkefni":"/verkefni/","#taeki":"/taekjakostur/","#um-okkur":"/um-okkur/","#hafa-samband":"/hafa-samband/","#tilbod":"/hafa-samband/#tilbod"};
+  var path=location.pathname;
+  if((path==="/"||path==="/index.html")&&map[location.hash]) location.replace(map[location.hash]);
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tækjakostur – Járn verktakar ehf. (DRÖG)</title>
+<link rel="canonical" href="https://jarnverk.is/taekjakostur/">
+<link rel="icon" href="/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/logo/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/img/logo/apple-touch-icon.png">
+<meta name="description" content="Tækjakostur Járn verktaka ehf. Hugmyndadrög – dæmi um tæki.">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-dig" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter"><path d="M6 40h18"/><path d="M10 40V28l12-14 10 6"/><path d="M32 20l8 10-6 8h-8"/><path d="M34 38l6-8"/></symbol>
+    <symbol id="i-clear" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"><path d="M6 36h36"/><path d="M10 36V24h14l6-8h10v20"/><path d="M6 42h8M18 42h8M30 42h12"/></symbol>
+    <symbol id="i-level" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"><path d="M4 30h40"/><path d="M4 38h40"/><path d="M12 22l12-10 12 10"/><path d="M24 12v18"/></symbol>
+    <symbol id="i-trench" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 14h12l4 22h8l4-22h12"/><path d="M20 36v0M28 36v0"/><path d="M4 42h40"/></symbol>
+    <symbol id="i-rock" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter"><path d="M6 38l8-14 8 6 8-16 12 24z"/><path d="M24 4v10M18 8l6 6 6-6"/></symbol>
+    <symbol id="i-drain" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 16h40v10H4z"/><path d="M12 26v6M24 26v10M36 26v6"/><path d="M8 42h6M20 42h8M34 42h6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M3 5h18v14H3z"/><path d="M3 6l9 8 9-8"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.500 7 12 7 12z"/><circle cx="12" cy="10" r="2.500"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="square"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  </defs>
+</svg>
+
+<div class="draft"><p>Drög &middot; Hugmyndakynning fyrir Járn verktaka ehf. &middot; Texti og myndir eru dæmi</p></div>
+
+<header>
+  <div class="wrap bar">
+    <a href="/" class="logo" aria-label="Járn verktakar – forsíða">
+      <img src="/img/logo/logo-horizontal-on-dark.svg" alt="Járn" width="177" height="56">
+    </a>
+    <button class="burger" id="burger" aria-label="Opna valmynd" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
+    <nav id="nav" aria-label="Aðalvalmynd">
+      <ul>
+        <li><a class="nl" href="/thjonusta/">Þjónusta</a></li>
+        <li><a class="nl" href="/verkefni/">Verkefni</a></li>
+        <li><a class="nl" href="/taekjakostur/" aria-current="page">Tækjakostur</a></li>
+        <li><a class="nl" href="/um-okkur/">Um okkur</a></li>
+        <li><a class="nl" href="/hafa-samband/">Hafðu samband</a></li>
+        <li><a class="btn btn-primary" href="/hafa-samband/#tilbod">Fá tilboð</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-head">
+  <div class="wrap">
+    <div class="eyebrow">Járn verktakar</div>
+    <h1>Tækjakostur</h1>
+  </div>
+  <div class="hero-stripe" aria-hidden="true"></div>
+</div>
+<section id="taeki">
+  <div class="wrap">
+    <div class="eyebrow">Tækjakostur</div>
+    <div class="head-row">
+      <h2 class="sec-title" style="margin-bottom:0">Réttu tækin<br>í verkið</h2>
+      <p class="sec-lead">Raunverulegur tækjalisti kemur frá Járn verktökum. Hér eru dæmi um tegundir tækja. <span class="ph">[Dæmi um texta]</span></p>
+    </div>
+  </div>
+  <div class="strip-wrap">
+    <div class="strip" tabindex="0" aria-label="Tækjakostur – flettu til hliðar">
+      <article class="eq"><div class="pic"><img src="/img/excavator-jcb.jpg" alt="Dæmimynd af beltagröfu" loading="lazy"></div><div class="txt"><small>Dæmi um tæki</small><h3>Beltagrafa</h3><p>[Tegund] &middot; [Þyngd] &middot; [Fjöldi]</p></div></article>
+      <article class="eq"><div class="pic"><img src="/img/wheel-loader.jpg" alt="Dæmimynd af hjólaskóflu" loading="lazy"></div><div class="txt"><small>Dæmi um tæki</small><h3>Hjólaskófla</h3><p>[Tegund] &middot; [Stærð skóflu] &middot; [Fjöldi]</p></div></article>
+      <article class="eq"><div class="pic"><img src="/img/bulldozer.jpg" alt="Dæmimynd af jarðýtu" loading="lazy" style="object-position:center 30%"></div><div class="txt"><small>Dæmi um tæki</small><h3>Jarðýta</h3><p>[Tegund] &middot; [Þyngd] &middot; [Fjöldi]</p></div></article>
+      <article class="eq"><div class="pic"><img src="/img/grader.jpg" alt="Dæmimynd af veghefli" loading="lazy"></div><div class="txt"><small>Dæmi um tæki</small><h3>Veghefill</h3><p>[Tegund] &middot; [Breidd hnífs] &middot; [Fjöldi]</p></div></article>
+      <article class="eq"><div class="pic"><img src="/img/rock-drill.jpg" alt="Dæmimynd af borvagni" loading="lazy"></div><div class="txt"><small>Dæmi um tæki</small><h3>Borvagn og fleygur</h3><p>[Tegund] &middot; [Búnaður] &middot; [Fjöldi]</p></div></article>
+      <article class="eq"><div class="pic"><img src="/img/hero-excavator.jpg" alt="Dæmimynd af vörubíl og gröfu" loading="lazy"></div><div class="txt"><small>Dæmi um tæki</small><h3>Vörubílar</h3><p>[Tegund] &middot; [Burðargeta] &middot; [Fjöldi]</p></div></article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="/" class="logo"><img src="/img/logo/logo-horizontal-on-dark.svg" alt="Járn" width="177" height="56"></a>
+        <p>Járn verktakar ehf.<br>kt. 650914-0660</p>
+      </div>
+      <div>
+        <h5>Heimilisfang</h5>
+        <p>Ármúli 24<br>108 Reykjavík<br><a href="https://jarnverktakar.is">jarnverktakar.is</a></p>
+      </div>
+      <div>
+        <h5>Síður</h5>
+        <ul>
+          <li><a href="/thjonusta/">Þjónusta</a></li>
+          <li><a href="/verkefni/">Verkefni</a></li>
+          <li><a href="/taekjakostur/" aria-current="page">Tækjakostur</a></li>
+          <li><a href="/um-okkur/">Um okkur</a></li>
+          <li><a href="/hafa-samband/">Hafðu samband</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal"><span>&copy; 2026 Járn verktakar ehf. &middot; jarnverktakar.is</span><span>Drög – hugmyndakynning</span></div>
+    <p class="credits">Dæmimyndir (Wikimedia Commons): NPS Photo (PD); Oto Zapletal, CC BY 4.0; W.carter, CC BY 4.0; Fletcher, CC BY 4.0; Wikideas1, CC0; US Navy / Mass Communication Specialist Nicholas Lingo (PD); MTA Capital Construction, CC BY 2.0. Sjá CREDITS.md.</p>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+</body>
+</html>
