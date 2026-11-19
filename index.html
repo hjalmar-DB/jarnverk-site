@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
+<script>document.documentElement.classList.add("js")</script>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-dig" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter"><path d="M6 40h18"/><path d="M10 40V28l12-14 10 6"/><path d="M32 20l8 10-6 8h-8"/><path d="M34 38l6-8"/></symbol>
@@ -68,6 +69,19 @@
 </header>
 
 <main>
+<aside class="snow-banner" id="snow-banner" hidden>
+  <div class="wrap snow-banner-in">
+    <div>
+      <div class="eyebrow">Vetur</div>
+      <h2>Snjóþjónusta í vetur</h2>
+      <p>Snjóþjónusta þegar snjór tefur aðkomu og vinnu.</p>
+    </div>
+    <div class="snow-banner-cta">
+      <a class="btn btn-primary" href="/thjonusta/#snjothjonusta">Sjá snjóþjónustu</a>
+      <a class="btn btn-ghost" href="/hafa-samband/#tilbod">Fá tilboð</a>
+    </div>
+  </div>
+</aside>
 <section class="hero">
   <div class="wrap">
     <div class="hero-in">
@@ -79,6 +93,23 @@
         <a href="/verkefni/" class="btn btn-ghost">Skoða verkefni</a>
       </div>
       <p class="hero-note">Reykjavík &middot; Frá 2014</p>
+      <ul class="stats" aria-label="Lykiltölur">
+        <li>
+          <b class="count" data-count-years>–</b>
+          <span>Ár í rekstri</span>
+          <small>Frá 2014</small>
+        </li>
+        <li>
+          <b class="count" data-count-to="11">11</b>
+          <span>Vinnuvélar</span>
+          <small>4 hjólavélar, 3 beltavélar, 2 minigröfur, 2 vélhjólbörur</small>
+        </li>
+        <li>
+          <b class="count" data-count-to="7">7</b>
+          <span>Þjónustuflokkar</span>
+          <small>Jarðvegur, lagnir, grunnar, dren, pallar, frágangur og snjór</small>
+        </li>
+      </ul>
     </div>
   </div>
   <div class="hero-stripe"></div>
@@ -149,6 +180,7 @@
   </div>
 </footer>
 
+<button type="button" class="snow-toggle" id="snow-toggle" hidden>Slökkva á snjó</button>
 <script src="/js/site.js"></script>
 </body>
 </html>

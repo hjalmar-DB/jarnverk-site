@@ -25,9 +25,11 @@
 <link rel="icon" href="/img/logo/favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="/img/logo/apple-touch-icon.png">
 <meta name="description" content="Verkefni Járn verktaka ehf. Hugmyndadrög – dæmi um unnin verk.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
+<script>document.documentElement.classList.add("js")</script>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-dig" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter"><path d="M6 40h18"/><path d="M10 40V28l12-14 10 6"/><path d="M32 20l8 10-6 8h-8"/><path d="M34 38l6-8"/></symbol>
@@ -85,6 +87,9 @@
       <p class="sec-lead">Hér koma raunveruleg verkefni með myndum frá Járn verktökum. <span class="ph">[Dæmi um texta]</span></p>
     </div>
 
+    <div id="verkefni-map" class="project-map" role="region" aria-label="Dæmi um verkefni á höfuðborgarsvæðinu"></div>
+    <p class="note">Kortið sýnir dæmi um staði á höfuðborgarsvæðinu, ekki unnin verk. Hvert merki er merkt Dæmi.</p>
+
     <div class="grid-proj">
       <a class="proj big" href="/verkefni/"><img src="/img/hero-excavator.jpg" alt="Dæmimynd af beltagröfu að moka á vörubíl" loading="lazy"><span class="tag">Jarðvegsþjónusta</span><span class="sample">Dæmimynd</span><div class="cap"><h3>[Verkefni 1]</h3><span>[Staðsetning] &middot; [Ár] &middot; [Verkkaupi]</span></div></a>
       <a class="proj" href="/verkefni/"><img src="/img/trench.jpg" alt="Dæmimynd af skurði fyrir lagnir" loading="lazy"><span class="tag">Lagnaþjónusta</span><span class="sample">Dæmimynd</span><div class="cap"><h3>[Verkefni 2]</h3><span>[Staðsetning] &middot; [Ár]</span></div></a>
@@ -123,6 +128,8 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="/js/projects.js"></script>
 <script src="/js/site.js"></script>
 </body>
 </html>
