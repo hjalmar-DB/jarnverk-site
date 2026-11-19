@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="is">
 <head>
+<script>
+(function(){
+  var h=location.hostname;
+  if(h==="jarnverktakar.is"||h==="www.jarnverktakar.is"||h==="www.jarnverk.is"){
+    location.replace("https://jarnverk.is"+location.pathname+location.search+location.hash);
+  }
+})();
+</script>
 <meta name="robots" content="noindex, nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Járn verktakar ehf. – Jarðvinna og undirbúningur byggingarsvæða (DRÖG)</title>
+<link rel="canonical" href="https://jarnverk.is/">
 <link rel="icon" href="img/logo/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="img/logo/favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="img/logo/apple-touch-icon.png">
