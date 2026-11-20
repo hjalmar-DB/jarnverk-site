@@ -54,7 +54,7 @@
   }
 
   if (!reduce && "IntersectionObserver" in window) {
-    var items = document.querySelectorAll("main > section:not(.hero), .card, .proj, .eq, .page-head");
+    var items = document.querySelectorAll("main > section:not(.hero), .card, .proj, .eq, .page-head, .team-card");
     var rio = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
         if (!en.isIntersecting) return;
