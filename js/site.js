@@ -53,8 +53,19 @@
     counts.forEach(animateCount);
   }
 
+  if (window.JARN_CLIENTS) {
+    document.querySelectorAll("[data-clients]").forEach(function(list){
+      list.innerHTML = JARN_CLIENTS.map(function(c){
+        var inner = c.logo
+          ? '<img src="' + esc(c.logo) + '" alt="' + esc(c.name) + '">'
+          : '<span class="wordmark">' + esc(c.name) + '</span>';
+        return '<li class="client">' + inner + '</li>';
+      }).join("");
+    });
+  }
+
   if (!reduce && "IntersectionObserver" in window) {
-    var items = document.querySelectorAll("main > section:not(.hero), .card, .proj, .eq, .page-head, .team-card");
+    var items = document.querySelectorAll("main > section:not(.hero), .card, .proj, .eq, .page-head, .team-card, .client");
     var rio = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
         if (!en.isIntersecting) return;

@@ -276,6 +276,21 @@ body > header::after{content:"";position:absolute;left:0;right:0;bottom:0;height
   .team-grid{grid-template-columns:1fr}
 }
 
+/* client wordmarks */
+.clients{background:#1C1B1A;border-block:1px solid rgba(240,223,40,.4);padding:46px 0 50px}
+.clients h2{font-size:clamp(15px,1.6vw,18px);letter-spacing:.22em;color:#F0DF28;font-weight:700;text-align:center;margin:0 0 28px}
+.client-row{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.client{display:flex;align-items:center;justify-content:center;min-height:88px;padding:18px 12px;border:1px solid rgba(240,223,40,.18);background:#1C1B1A;transition:border-color .2s,color .2s}
+.client .wordmark{font-family:var(--display);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:clamp(20px,2vw,30px);line-height:1;color:#e6e6e6;text-align:center}
+.client img{display:block;max-width:78%;max-height:46px;width:auto;height:auto;margin:auto;object-fit:contain}
+.client:hover,.client:focus-within{border-color:#F0DF28}
+.client:hover .wordmark,.client:focus-within .wordmark{color:#F0DF28}
+@media (max-width:700px){
+  .client-row{grid-template-columns:repeat(2,1fr)}
+  .client{min-height:78px}
+  .client .wordmark{font-size:22px}
+}
+
 /* project map */
 .project-map{height:min(560px,72vh);min-height:320px;margin-top:36px;background:#1C1B1A;border:1px solid var(--line)}
 .project-map .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.88) contrast(1.05) saturate(.15)}
