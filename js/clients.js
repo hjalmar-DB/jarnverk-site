@@ -12,8 +12,8 @@
    Bláa lónið — orðmerki. bluelagoon.com lokar á sækingu (Cloudflare)
                  og eina opinbera skráin sem náðist var 180px BL-tákn, ekki orðmerkið. */
 var JARN_CLIENTS = [
-  { name: "Veitur", logo: "/img/clients/veitur.svg" },
-  { name: "HS Veitur", logo: "/img/clients/hs-veitur.svg" },
+  { name: "Veitur", logo: "/img/clients/veitur.svg", w: 1518, h: 331 },
+  { name: "HS Veitur", logo: "/img/clients/hs-veitur.svg", w: 230, h: 50 },
   { name: "Bláa lónið", logo: "" },
-  { name: "Ístak", logo: "/img/clients/istak.png" }
+  { name: "Ístak", logo: "/img/clients/istak.png", w: 800, h: 345 }
 ];

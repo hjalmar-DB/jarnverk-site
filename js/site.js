@@ -13,33 +13,21 @@
     document.getElementById("formmsg").style.display = "block";
   });
 
-  function icelandYear(){
-    try {
-      return Number(new Intl.DateTimeFormat("en-GB", {timeZone:"Atlantic/Reykjavik", year:"numeric"}).format(new Date()));
-    } catch (e) {
-      return new Date().getUTCFullYear();
-    }
-  }
-  var years = Math.max(0, icelandYear() - 2014);
-  document.querySelectorAll("[data-count-years]").forEach(function(el){
-    el.setAttribute("data-count-to", String(years));
-  });
-
   function animateCount(el){
-    if (el.getAttribute("data-placeholder") === "true") return;
     var target = Number(el.getAttribute("data-count-to"));
     if (!isFinite(target)) return;
-    if (reduce) { el.textContent = String(target); return; }
-    var start = performance.now(), dur = 1100;
+    if (reduce) return;
+    var start = performance.now(), dur = 900;
+    el.textContent = "0";
     function tick(now){
       var t = Math.min(1, (now - start) / dur);
       var eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = String(Math.round(target * eased));
+      el.textContent = String(t < 1 ? Math.round(target * eased) : target);
       if (t < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
   }
-  var counts = document.querySelectorAll("[data-count-to],[data-count-years]");
+  var counts = document.querySelectorAll("[data-count-to]");
   if (counts.length && "IntersectionObserver" in window) {
     var cio = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
@@ -57,7 +45,7 @@
     document.querySelectorAll("[data-clients]").forEach(function(list){
       list.innerHTML = JARN_CLIENTS.map(function(c){
         var inner = c.logo
-          ? '<img src="' + esc(c.logo) + '" alt="' + esc(c.name) + '">'
+          ? '<img src="' + esc(c.logo) + '" alt="' + esc(c.name) + '" width="' + (c.w || 230) + '" height="' + (c.h || 50) + '" loading="lazy">'
           : '<span class="wordmark">' + esc(c.name) + '</span>';
         return '<li class="client">' + inner + '</li>';
       }).join("");
@@ -82,18 +70,64 @@
   }
 
   var mapEl = document.getElementById("verkefni-map");
-  if (mapEl && window.L && window.JARN_PROJECTS) {
-    var map = L.map(mapEl, {scrollWheelZoom:false}).setView([64.12, -21.9], 11);
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 18,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-    var icon = L.divIcon({className:"pin", html:"<span></span>", iconSize:[18,18], iconAnchor:[9,9], popupAnchor:[0,-12]});
-    JARN_PROJECTS.forEach(function(p){
-      var html = '<div class="map-pop"><span class="tag">Dæmi</span><strong>' + esc(p.title) + "</strong><p>" + esc(p.text) + '</p><div class="map-photo">Mynd kemur</div></div>';
-      L.marker([p.lat, p.lng], {icon:icon, title:p.title}).addTo(map).bindPopup(html, {maxWidth:280});
-    });
-    setTimeout(function(){ map.invalidateSize(); }, 200);
+  if (mapEl && window.JARN_PROJECTS) {
+    var mapStarted = false;
+    function initMap(){
+      if (mapStarted || !window.L) return;
+      mapStarted = true;
+      var map = L.map(mapEl, {
+        scrollWheelZoom: false,
+        dragging: false,
+        touchZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false
+      }).setView([64.12, -21.9], 11);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+      var icon = L.divIcon({className:"pin", html:"<span></span>", iconSize:[18,18], iconAnchor:[9,9], popupAnchor:[0,-12]});
+      JARN_PROJECTS.forEach(function(p){
+        var html = '<div class="map-pop"><span class="tag">Dæmi</span><strong>' + esc(p.title) + "</strong><p>" + esc(p.text) + '</p><div class="map-photo">Mynd kemur</div></div>';
+        L.marker([p.lat, p.lng], {icon:icon, title:p.title}).addTo(map).bindPopup(html, {maxWidth:280});
+      });
+      var shield = document.getElementById("map-shield");
+      function activate(e){
+        if (e) e.preventDefault();
+        map.dragging.enable();
+        map.touchZoom.enable();
+        map.scrollWheelZoom.disable();
+        if (shield) shield.hidden = true;
+        setTimeout(function(){ map.invalidateSize(); }, 60);
+      }
+      if (shield) shield.addEventListener("click", activate);
+      setTimeout(function(){ map.invalidateSize(); }, 200);
+    }
+    function loadMap(){
+      if (window.L) { initMap(); return; }
+      if (mapEl.dataset.loading === "1") return;
+      mapEl.dataset.loading = "1";
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css";
+      document.head.appendChild(link);
+      var s = document.createElement("script");
+      s.src = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js";
+      s.onload = initMap;
+      document.body.appendChild(s);
+    }
+    if ("IntersectionObserver" in window) {
+      var mio = new IntersectionObserver(function(entries){
+        if (entries.some(function(en){ return en.isIntersecting; })) {
+          loadMap();
+          mio.disconnect();
+        }
+      }, {rootMargin: "240px"});
+      mio.observe(mapEl);
+    } else {
+      loadMap();
+    }
   }
 
   function esc(s){
