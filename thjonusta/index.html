@@ -69,12 +69,13 @@
     <button class="burger" id="burger" aria-label="Opna valmynd" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
     <nav id="nav" aria-label="Aðalvalmynd">
       <ul>
+        <li><a class="nl" href="/">Forsíða</a></li>
         <li><a class="nl" href="/thjonusta/" aria-current="page">Þjónusta</a></li>
         <li><a class="nl" href="/verkefni/">Verkefni</a></li>
         <li><a class="nl" href="/taekjakostur/">Tækjakostur</a></li>
         <li><a class="nl" href="/um-okkur/">Um okkur</a></li>
-        <li><a class="nl" href="/hafa-samband/">Hafðu samband</a></li>
-        <li><a class="btn btn-primary" href="/hafa-samband/#tilbod">Fá tilboð</a></li>
+        <li><a class="nl" href="/hafa-samband/">Hafa samband</a></li>
+        <li><a class="btn btn-primary" href="/hafa-samband/#tilbod">Fá tilboð <span aria-hidden="true">↗</span></a></li>
       </ul>
     </nav>
   </div>
@@ -91,16 +92,16 @@
 <section id="thjonusta">
   <div class="wrap">
     <div class="eyebrow">Þjónusta</div>
-    <h2 class="sec-title">Það sem við gerum</h2>
+    <h2 class="sec-title">Rétt þjónusta. Réttur búnaður. Rétt vinnubrögð.</h2>
     <p class="sec-lead">Aðalverkefnið er mokstur í kringum lagnir fyrir veitufyrirtæki.</p>
 
     <div class="grid-services">
-      <article class="card featured wide"><span class="num">01</span><div class="icon"><svg><use href="#i-trench"/></svg></div><div class="body"><span class="flag">Aðalþjónusta</span><h3>Lagnaþjónusta í jörðu</h3><p>Við mokum í kringum lagnir og strengi fyrir veitufyrirtæki.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></div></article>
-      <article class="card"><span class="num">02</span><div class="icon"><svg><use href="#i-dig"/></svg></div><h3>Jarðvegsþjónusta</h3><p>Við sinnum jarðvegsþjónustu á byggingarstöðum og lóðum.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></article>
-      <article class="card"><span class="num">03</span><div class="icon"><svg><use href="#i-level"/></svg></div><h3>Yfirborðsfrágangur</h3><p>Við frágöngum yfirborð að jarðvinnu lokinni.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></article>
-      <article class="card"><span class="num">04</span><div class="icon"><svg><use href="#i-clear"/></svg></div><h3>Húsgrunnar</h3><p>Við mokum og undirbúum fyrir húsgrunna.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></article>
-      <article class="card"><span class="num">05</span><div class="icon"><svg><use href="#i-drain"/></svg></div><h3>Drenlagnir</h3><p>Við leggjum drenlagnir við hús og lóðir.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></article>
-      <article class="card"><span class="num">06</span><div class="icon"><svg><use href="#i-dig"/></svg></div><h3>Mokstur fyrir palla</h3><p>Við mokum fyrir palla við hús og á lóð.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></article>
+      <article class="card featured wide" id="lagna-thjonusta"><span class="num">01</span><div class="icon"><svg><use href="#i-trench"/></svg></div><div class="body"><span class="flag">Aðalþjónusta</span><h3>Lagnaþjónusta í jörðu</h3><p>Við mokum í kringum lagnir og strengi fyrir veitufyrirtæki.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></div></article>
+      <article class="card" id="jardvegsthjonusta"><span class="num">02</span><div class="icon"><svg><use href="#i-dig"/></svg></div><h3>Jarðvegsþjónusta</h3><p>Við sinnum jarðvegsþjónustu á byggingarstöðum og lóðum.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></article>
+      <article class="card" id="yfirbordsfragangur"><span class="num">03</span><div class="icon"><svg><use href="#i-level"/></svg></div><h3>Yfirborðsfrágangur</h3><p>Við frágöngum yfirborð að jarðvinnu lokinni.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></article>
+      <article class="card" id="husgrunnar"><span class="num">04</span><div class="icon"><svg><use href="#i-clear"/></svg></div><h3>Húsgrunnar</h3><p>Við mokum og undirbúum fyrir húsgrunna.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></article>
+      <article class="card" id="drenlagnir"><span class="num">05</span><div class="icon"><svg><use href="#i-drain"/></svg></div><h3>Drenlagnir</h3><p>Við leggjum drenlagnir við hús og lóðir.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></article>
+      <article class="card" id="mokstur-fyrir-palla"><span class="num">06</span><div class="icon"><svg><use href="#i-dig"/></svg></div><h3>Mokstur fyrir palla</h3><p>Við mokum fyrir palla við hús og á lóð.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></article>
       <article class="card" id="snjothjonusta"><span class="num">07</span><div class="icon"><svg><use href="#i-snow"/></svg></div><h3>Snjóþjónusta</h3><p>Við sinnum snjóþjónustu þegar snjór tefur aðkomu og vinnu.</p><a class="card-cta" href="/hafa-samband/#tilbod">Fá tilboð</a></article>
     </div>
   </div>
@@ -112,25 +113,35 @@
     <div class="foot">
       <div>
         <a href="/" class="logo"><img src="/img/logo/logo-horizontal-on-dark.svg" alt="Járn" width="177" height="56"></a>
-        <p>Járn verktakar ehf.<br>kt. 650914-0660</p>
+        <p>Járn verktakar ehf.</p>
+        <p>Við leggjum grunninn.</p>
       </div>
       <div>
-        <h5>Heimilisfang</h5>
-        <p>Ármúli 24<br>108 Reykjavík<br><a href="https://jarnverk.is">jarnverk.is</a></p>
-      </div>
-      <div>
-        <h5>Síður</h5>
+        <h5>Þjónusta</h5>
         <ul>
-          <li><a href="/thjonusta/" aria-current="page">Þjónusta</a></li>
+          <li><a href="/thjonusta/#lagna-thjonusta">Lagnaþjónusta</a></li>
+          <li><a href="/thjonusta/#jardvegsthjonusta">Jarðvegsþjónusta</a></li>
+          <li><a href="/thjonusta/#husgrunnar">Húsgrunnar</a></li>
+          <li><a href="/thjonusta/#drenlagnir">Drenlagnir</a></li>
+          <li><a href="/thjonusta/#snjothjonusta">Snjóþjónusta</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Upplýsingar</h5>
+        <ul>
+          <li><a href="/um-okkur/">Um okkur</a></li>
           <li><a href="/verkefni/">Verkefni</a></li>
           <li><a href="/taekjakostur/">Tækjakostur</a></li>
-          <li><a href="/um-okkur/">Um okkur</a></li>
-          <li><a href="/hafa-samband/">Hafðu samband</a></li>
+          <li><a href="/hafa-samband/">Hafa samband</a></li>
         </ul>
+      </div>
+      <div>
+        <h5>Samband</h5>
+        <p>Ármúli 24<br>108 Reykjavík<br>kt. 650914-0660<br><a href="https://jarnverk.is">jarnverk.is</a></p>
       </div>
     </div>
     <div class="legal"><span>&copy; 2026 Járn verktakar ehf. &middot; jarnverk.is</span><span>Drög – hugmyndakynning</span></div>
-    <p class="credits">Dæmimyndir (Wikimedia Commons): NPS Photo (PD); Oto Zapletal, CC BY 4.0; W.carter, CC BY 4.0; Fletcher, CC BY 4.0; Wikideas1, CC0; US Navy / Mass Communication Specialist Nicholas Lingo (PD); MTA Capital Construction, CC BY 2.0. Sjá CREDITS.md.</p>
+    <p class="credits">Merki viðskiptavina eru af vefjum þeirra. Sjá CREDITS.md fyrir eldri dæmimyndir sem eru ekki birtar.</p>
   </div>
 </footer>
 

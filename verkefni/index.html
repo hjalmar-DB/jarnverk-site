@@ -69,12 +69,13 @@
     <button class="burger" id="burger" aria-label="Opna valmynd" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
     <nav id="nav" aria-label="Aðalvalmynd">
       <ul>
+        <li><a class="nl" href="/">Forsíða</a></li>
         <li><a class="nl" href="/thjonusta/">Þjónusta</a></li>
         <li><a class="nl" href="/verkefni/" aria-current="page">Verkefni</a></li>
         <li><a class="nl" href="/taekjakostur/">Tækjakostur</a></li>
         <li><a class="nl" href="/um-okkur/">Um okkur</a></li>
-        <li><a class="nl" href="/hafa-samband/">Hafðu samband</a></li>
-        <li><a class="btn btn-primary" href="/hafa-samband/#tilbod">Fá tilboð</a></li>
+        <li><a class="nl" href="/hafa-samband/">Hafa samband</a></li>
+        <li><a class="btn btn-primary" href="/hafa-samband/#tilbod">Fá tilboð <span aria-hidden="true">↗</span></a></li>
       </ul>
     </nav>
   </div>
@@ -90,27 +91,10 @@
 </div>
 <section id="verkefni">
   <div class="wrap">
-    <div class="head-row">
-      <div>
-        <div class="eyebrow">Verkefni</div>
-        <h2 class="sec-title" style="margin-bottom:0">Unnin verk</h2>
-      </div>
-      <p class="sec-lead">Hér koma raunveruleg verkefni með myndum frá Járn verktökum. <span class="ph">[Dæmi um texta]</span></p>
-    </div>
-
-    <div class="map-wrap">
-      <div id="verkefni-map" class="project-map" role="region" aria-label="Dæmi um verkefni á höfuðborgarsvæðinu"></div>
-      <div class="map-shield" id="map-shield"><button type="button" class="map-activate">Ýttu til að færa kortið</button></div>
-    </div>
-    <p class="note">Kortið sýnir dæmi um staði á höfuðborgarsvæðinu, ekki unnin verk. Hvert merki er merkt Dæmi.</p>
-
-    <div class="grid-proj">
-      <a class="proj big" href="/verkefni/"><img width="1600" height="1067" src="/img/hero-excavator.jpg" alt="Dæmimynd af beltagröfu að moka á vörubíl" loading="lazy"><span class="tag">Jarðvegsþjónusta</span><span class="sample">Dæmimynd</span><div class="cap"><h3>[Verkefni 1]</h3><span>[Staðsetning] &middot; [Ár] &middot; [Verkkaupi]</span></div></a>
-      <a class="proj" href="/verkefni/"><img width="1600" height="1200" src="/img/trench.jpg" alt="Dæmimynd af skurði fyrir lagnir" loading="lazy"><span class="tag">Lagnaþjónusta</span><span class="sample">Dæmimynd</span><div class="cap"><h3>[Verkefni 2]</h3><span>[Staðsetning] &middot; [Ár]</span></div></a>
-      <a class="proj" href="/verkefni/"><img width="1600" height="1067" src="/img/rock-drill.jpg" alt="Dæmimynd af vinnuvél" loading="lazy"><span class="tag">Jarðvegsþjónusta</span><span class="sample">Dæmimynd</span><div class="cap"><h3>[Verkefni 3]</h3><span>[Staðsetning] &middot; [Ár]</span></div></a>
-      <a class="proj w6" href="/verkefni/"><img width="1600" height="977" src="/img/grader.jpg" alt="Dæmimynd af veghefli að jafna land" loading="lazy" style="object-position:center 40%"><span class="tag">Yfirborðsfrágangur</span><span class="sample">Dæmimynd</span><div class="cap"><h3>[Verkefni 4]</h3><span>[Staðsetning] &middot; [Ár]</span></div></a>
-      <a class="proj w6" href="/verkefni/"><img width="1600" height="1143" src="/img/bulldozer.jpg" alt="Dæmimynd af jarðýtu að ýta jarðvegi" loading="lazy" style="object-position:center 35%"><span class="tag">Húsgrunnar</span><span class="sample">Dæmimynd</span><div class="cap"><h3>[Verkefni 5]</h3><span>[Staðsetning] &middot; [Ár]</span></div></a>
-    </div>
+    <div class="eyebrow">Verkefni</div>
+    <h2 class="sec-title">Verkin tala sínu máli</h2>
+    <p class="sec-lead">Verkefnasafnið birtist þegar myndir, staðsetningar og lýsingar hafa borist. Þangað til er hægt að óska eftir tilboði.</p>
+    <a class="btn btn-primary" href="/hafa-samband/#tilbod">Fá tilboð <span aria-hidden="true">↗</span></a>
   </div>
 </section>
 </main>
@@ -120,29 +104,38 @@
     <div class="foot">
       <div>
         <a href="/" class="logo"><img src="/img/logo/logo-horizontal-on-dark.svg" alt="Járn" width="177" height="56"></a>
-        <p>Járn verktakar ehf.<br>kt. 650914-0660</p>
+        <p>Járn verktakar ehf.</p>
+        <p>Við leggjum grunninn.</p>
       </div>
       <div>
-        <h5>Heimilisfang</h5>
-        <p>Ármúli 24<br>108 Reykjavík<br><a href="https://jarnverk.is">jarnverk.is</a></p>
-      </div>
-      <div>
-        <h5>Síður</h5>
+        <h5>Þjónusta</h5>
         <ul>
-          <li><a href="/thjonusta/">Þjónusta</a></li>
-          <li><a href="/verkefni/" aria-current="page">Verkefni</a></li>
-          <li><a href="/taekjakostur/">Tækjakostur</a></li>
-          <li><a href="/um-okkur/">Um okkur</a></li>
-          <li><a href="/hafa-samband/">Hafðu samband</a></li>
+          <li><a href="/thjonusta/#lagna-thjonusta">Lagnaþjónusta</a></li>
+          <li><a href="/thjonusta/#jardvegsthjonusta">Jarðvegsþjónusta</a></li>
+          <li><a href="/thjonusta/#husgrunnar">Húsgrunnar</a></li>
+          <li><a href="/thjonusta/#drenlagnir">Drenlagnir</a></li>
+          <li><a href="/thjonusta/#snjothjonusta">Snjóþjónusta</a></li>
         </ul>
+      </div>
+      <div>
+        <h5>Upplýsingar</h5>
+        <ul>
+          <li><a href="/um-okkur/">Um okkur</a></li>
+          <li><a href="/verkefni/">Verkefni</a></li>
+          <li><a href="/taekjakostur/">Tækjakostur</a></li>
+          <li><a href="/hafa-samband/">Hafa samband</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Samband</h5>
+        <p>Ármúli 24<br>108 Reykjavík<br>kt. 650914-0660<br><a href="https://jarnverk.is">jarnverk.is</a></p>
       </div>
     </div>
     <div class="legal"><span>&copy; 2026 Járn verktakar ehf. &middot; jarnverk.is</span><span>Drög – hugmyndakynning</span></div>
-    <p class="credits">Dæmimyndir (Wikimedia Commons): NPS Photo (PD); Oto Zapletal, CC BY 4.0; W.carter, CC BY 4.0; Fletcher, CC BY 4.0; Wikideas1, CC0; US Navy / Mass Communication Specialist Nicholas Lingo (PD); MTA Capital Construction, CC BY 2.0. Sjá CREDITS.md.</p>
+    <p class="credits">Merki viðskiptavina eru af vefjum þeirra. Sjá CREDITS.md fyrir eldri dæmimyndir sem eru ekki birtar.</p>
   </div>
 </footer>
 
-<script src="/js/projects.js" defer></script>
 <script src="/js/site.js" defer></script>
 <nav class="dock" aria-label="Flýtiaðgerðir"><a class="btn btn-primary" href="/hafa-samband/#tilbod">Tilboð</a></nav>
 </body>

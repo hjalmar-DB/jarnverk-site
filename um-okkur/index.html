@@ -69,12 +69,13 @@
     <button class="burger" id="burger" aria-label="Opna valmynd" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
     <nav id="nav" aria-label="Aðalvalmynd">
       <ul>
+        <li><a class="nl" href="/">Forsíða</a></li>
         <li><a class="nl" href="/thjonusta/">Þjónusta</a></li>
         <li><a class="nl" href="/verkefni/">Verkefni</a></li>
         <li><a class="nl" href="/taekjakostur/">Tækjakostur</a></li>
         <li><a class="nl" href="/um-okkur/" aria-current="page">Um okkur</a></li>
-        <li><a class="nl" href="/hafa-samband/">Hafðu samband</a></li>
-        <li><a class="btn btn-primary" href="/hafa-samband/#tilbod">Fá tilboð</a></li>
+        <li><a class="nl" href="/hafa-samband/">Hafa samband</a></li>
+        <li><a class="btn btn-primary" href="/hafa-samband/#tilbod">Fá tilboð <span aria-hidden="true">↗</span></a></li>
       </ul>
     </nav>
   </div>
@@ -89,80 +90,26 @@
   <div class="hero-stripe" aria-hidden="true"></div>
 </div>
 <section id="um-okkur">
-  <div class="wrap about">
-    <div class="about-vis" role="img" aria-label="Dæmimynd af beltagröfu við vinnu">
-      <div class="since"><small>Frá</small><b>2014</b></div>
-    </div>
-    <div>
-      <div class="eyebrow">Um okkur</div>
-      <h2 class="sec-title">Járn verktakar<br>ehf.</h2>
-      <p>Járn verktakar er verktakafyrirtæki í Reykjavík sem hefur starfað frá árinu 2014 og sinnir jarðvinnu og undirbúningi byggingarsvæða. <em class="ph">[Dæmi um texta – saga fyrirtækisins, áherslur og starfsfólk.]</em></p>
-      <p><em class="ph">[Dæmi um texta: Stutt lýsing á því hvernig fyrirtækið vinnur, hvaða verkkaupa það þjónar og hvað gerir það að góðum samstarfsaðila.]</em></p>
-      <ul class="stats" aria-label="Lykiltölur">
-        <li>
-          <b class="count" data-count-to="12">12</b>
-          <span>Ár í rekstri</span>
-          <small>Frá 2014</small>
-        </li>
-        <li>
-          <b class="count" data-count-to="11">11</b>
-          <span>Vinnuvélar</span>
-          <small>4 hjólavélar, 3 beltavélar, 2 minigröfur, 2 vélhjólbörur</small>
-        </li>
-        <li>
-          <b class="count" data-count-to="7">7</b>
-          <span>Þjónustuflokkar</span>
-        </li>
-      </ul>
-      <ul class="facts">
-        <li><b>[Gildi 1]</b>Dæmi um texta</li>
-        <li><b>[Gildi 2]</b>Dæmi um texta</li>
-        <li><b>[Gildi 3]</b>Dæmi um texta</li>
-      </ul>
-    </div>
+  <div class="wrap">
+    <div class="eyebrow">Um okkur</div>
+    <h2 class="sec-title">Traustur grunnur. Öflug framkvæmd.</h2>
+    <p class="sec-lead">Járn verktakar er verktakafyrirtæki í Reykjavík sem hefur starfað frá árinu 2014 og sinnir jarðvinnu, lagnaþjónustu í jörðu og tengdum framkvæmdum.</p>
+    <ul class="stats" aria-label="Lykiltölur">
+      <li><b class="count" data-count-to="12">12</b><span>Ár í rekstri</span><small>Frá 2014</small></li>
+      <li><b class="count" data-count-to="11">11</b><span>Vinnuvélar</span><small>4 hjólavélar, 3 beltavélar, 2 minigröfur, 2 vélhjólbörur</small></li>
+      <li><b class="count" data-count-to="7">7</b><span>Þjónustuflokkar</span></li>
+    </ul>
   </div>
 </section>
 
-<section class="clients" aria-labelledby="clients-title">
+<section class="clients" aria-labelledby="clients-title-about">
   <div class="wrap">
-    <h2 id="clients-title">Við höfum unnið fyrir</h2>
+    <h2 id="clients-title-about">Fyrirtæki sem hafa treyst okkur</h2>
     <ul class="client-row" data-clients></ul>
   </div>
 </section>
 
-<!--
-  Teymið — eitt <article class="team-card"> á mann. Auðvelt að fylla inn síðar:
-  name:  texti í h3 (nú "Nafn kemur")
-  role:  texti í .role (nú "Starfsheiti")
-  phone: valkvæmt, <p class="team-contact"><a href="tel:+354...">...</a></p>
-  email: valkvæmt, <p class="team-contact"><a href="mailto:...">...</a></p>
-  photo: valkvæmt, skiptu .team-photo út fyrir <img src="/img/team/skra.jpg" alt=""> þegar mynd liggur fyrir
--->
-<section id="teymi">
-  <div class="wrap">
-    <div class="eyebrow">Teymið</div>
-    <h2 class="sec-title">Fólkið á bak við verkin</h2>
-    <p class="sec-lead">Nöfn, starfsheiti og myndir koma þegar teymið er tilbúið.</p>
-    <div class="team-grid">
-      <article class="team-card">
-        <div class="team-photo" role="img" aria-label="Mynd kemur"><span class="sample">Dæmi</span><span class="soon">Mynd kemur</span></div>
-        <div class="txt"><h3>Nafn kemur</h3><p class="role">Starfsheiti</p></div>
-      </article>
-      <article class="team-card">
-        <div class="team-photo" role="img" aria-label="Mynd kemur"><span class="sample">Dæmi</span><span class="soon">Mynd kemur</span></div>
-        <div class="txt"><h3>Nafn kemur</h3><p class="role">Starfsheiti</p></div>
-      </article>
-      <article class="team-card">
-        <div class="team-photo" role="img" aria-label="Mynd kemur"><span class="sample">Dæmi</span><span class="soon">Mynd kemur</span></div>
-        <div class="txt"><h3>Nafn kemur</h3><p class="role">Starfsheiti</p></div>
-      </article>
-      <article class="team-card">
-        <div class="team-photo" role="img" aria-label="Mynd kemur"><span class="sample">Dæmi</span><span class="soon">Mynd kemur</span></div>
-        <div class="txt"><h3>Nafn kemur</h3><p class="role">Starfsheiti</p></div>
-      </article>
-    </div>
-  </div>
-</section>
+
 </main>
 
 <footer>
@@ -170,25 +117,35 @@
     <div class="foot">
       <div>
         <a href="/" class="logo"><img src="/img/logo/logo-horizontal-on-dark.svg" alt="Járn" width="177" height="56"></a>
-        <p>Járn verktakar ehf.<br>kt. 650914-0660</p>
+        <p>Járn verktakar ehf.</p>
+        <p>Við leggjum grunninn.</p>
       </div>
       <div>
-        <h5>Heimilisfang</h5>
-        <p>Ármúli 24<br>108 Reykjavík<br><a href="https://jarnverk.is">jarnverk.is</a></p>
-      </div>
-      <div>
-        <h5>Síður</h5>
+        <h5>Þjónusta</h5>
         <ul>
-          <li><a href="/thjonusta/">Þjónusta</a></li>
+          <li><a href="/thjonusta/#lagna-thjonusta">Lagnaþjónusta</a></li>
+          <li><a href="/thjonusta/#jardvegsthjonusta">Jarðvegsþjónusta</a></li>
+          <li><a href="/thjonusta/#husgrunnar">Húsgrunnar</a></li>
+          <li><a href="/thjonusta/#drenlagnir">Drenlagnir</a></li>
+          <li><a href="/thjonusta/#snjothjonusta">Snjóþjónusta</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Upplýsingar</h5>
+        <ul>
+          <li><a href="/um-okkur/">Um okkur</a></li>
           <li><a href="/verkefni/">Verkefni</a></li>
           <li><a href="/taekjakostur/">Tækjakostur</a></li>
-          <li><a href="/um-okkur/" aria-current="page">Um okkur</a></li>
-          <li><a href="/hafa-samband/">Hafðu samband</a></li>
+          <li><a href="/hafa-samband/">Hafa samband</a></li>
         </ul>
+      </div>
+      <div>
+        <h5>Samband</h5>
+        <p>Ármúli 24<br>108 Reykjavík<br>kt. 650914-0660<br><a href="https://jarnverk.is">jarnverk.is</a></p>
       </div>
     </div>
     <div class="legal"><span>&copy; 2026 Járn verktakar ehf. &middot; jarnverk.is</span><span>Drög – hugmyndakynning</span></div>
-    <p class="credits">Dæmimyndir (Wikimedia Commons): NPS Photo (PD); Oto Zapletal, CC BY 4.0; W.carter, CC BY 4.0; Fletcher, CC BY 4.0; Wikideas1, CC0; US Navy / Mass Communication Specialist Nicholas Lingo (PD); MTA Capital Construction, CC BY 2.0. Sjá CREDITS.md.</p>
+    <p class="credits">Merki viðskiptavina eru af vefjum þeirra. Sjá CREDITS.md fyrir eldri dæmimyndir sem eru ekki birtar.</p>
   </div>
 </footer>
 

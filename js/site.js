@@ -1,6 +1,13 @@
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  var header = document.querySelector("body > header");
+  if (header) {
+    var onScroll = function(){ header.classList.toggle("is-scrolled", window.scrollY > 24); };
+    onScroll();
+    window.addEventListener("scroll", onScroll, {passive:true});
+  }
+
   var b = document.getElementById("burger"), n = document.getElementById("nav");
   if (b && n) {
     function set(o){n.classList.toggle("open", o);b.setAttribute("aria-expanded", o)}
@@ -10,7 +17,52 @@
   var form = document.getElementById("tilbod");
   if (form) form.addEventListener("submit", function(e){
     e.preventDefault();
-    document.getElementById("formmsg").style.display = "block";
+    var err = document.getElementById("formerr");
+    var msg = document.getElementById("formmsg");
+    if (err) { err.hidden = true; err.textContent = ""; }
+    if (msg) msg.hidden = true;
+    var problems = [];
+    function need(id, label){
+      var el = document.getElementById(id);
+      if (!el) return;
+      var ok = String(el.value || "").trim().length > 0;
+      el.setAttribute("aria-invalid", ok ? "false" : "true");
+      if (!ok) problems.push(label);
+    }
+    need("nafn", "fullt nafn");
+    var email = document.getElementById("netfang");
+    var emailOk = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    if (email) email.setAttribute("aria-invalid", emailOk ? "false" : "true");
+    if (!emailOk) problems.push("netfang");
+    need("simi", "símanúmer");
+    need("tegund", "tegund framkvæmdar");
+    need("stadur", "staðsetning");
+    need("lysing", "lýsing");
+    var files = document.getElementById("skrar");
+    if (files && files.files) {
+      var allowed = {"image/jpeg":1,"image/png":1,"image/webp":1,"application/pdf":1};
+      if (files.files.length > 5) problems.push("mest 5 skrár");
+      for (var i = 0; i < files.files.length; i++) {
+        var f = files.files[i];
+        if (!allowed[f.type]) problems.push("einungis JPG, PNG, WEBP eða PDF");
+        if (f.size > 10 * 1024 * 1024) problems.push("hver skrá mest 10 MB");
+      }
+    }
+    var honey = form.querySelector("[name=vefur]");
+    if (honey && honey.value) problems.push("beiðni");
+    if (problems.length) {
+      if (err) {
+        err.hidden = false;
+        err.textContent = "Vantar: " + problems.filter(function(v,i,a){return a.indexOf(v)===i;}).join(", ") + ".";
+      }
+      var first = form.querySelector("[aria-invalid=true]");
+      if (first) first.focus();
+      return;
+    }
+    if (msg) {
+      msg.hidden = false;
+      msg.textContent = "Beiðnin var ekki send. Móttaka fyrirspurna er ekki tengd enn.";
+    }
   });
 
   function animateCount(el){
