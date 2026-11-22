@@ -21,7 +21,7 @@
 
 - Kennitala 650914-0660, Ármúli 24, 108 Reykjavík, jarnverk.is.
 - Þjónusta: lagnaþjónusta í jörðu, jarðvegsþjónusta, yfirborðsfrágangur, húsgrunnar, drenlagnir, mokstur fyrir palla, snjóþjónusta.
-- Tækjalisti: vörubílar (fjöldi ekki tilgreindur, ekki skrifa það á síðuna), krókheysibílar (fjöldi ekki tilgreindur), 4 hjólavélar, 1 beltavél 10 t, 2 beltavélar 5,7 t, 2 minigröfur, 2 vélhjólbörur, ásamt ýmsum öðrum búnaði. Ljósmyndir af vélunum bíða. Ekki útskýra það fyrir gestum.
+- Tækjalisti: vörubílar (fjöldi ekki tilgreindur, ekki skrifa það á síðuna), krókheysisbílar (fjöldi ekki tilgreindur), 4 hjólavélar, 1 beltavél 10 t, 2 beltavélar 5,7 t, 2 minigröfur, 2 vélhjólbörur, ásamt ýmsum öðrum búnaði. Ljósmyndir af vélunum bíða. Ekki útskýra það fyrir gestum.
 - Viðskiptavinir: Veitur, HS Veitur, Bláa lónið, Ístak.
 - Snjór á forsíðu frá 1. nóvember til 31. mars. Slökkt með hnappi eða `?snow=0`. Kveikt utan tímabils með `?snow=1`.
 
