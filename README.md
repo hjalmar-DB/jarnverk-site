@@ -9,4 +9,4 @@ This is a multi-page static site. It needs no build step. It is hosted on Render
 - `/verkefni/` Verkefni
 - `/taekjakostur/` Tækjakostur
 - `/um-okkur/` Um okkur
-- `/hafa-samband/` Hafðu samband
+- `/hafa-samband/` Hafa samband

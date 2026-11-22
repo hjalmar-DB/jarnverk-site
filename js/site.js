@@ -10,7 +10,11 @@
 
   var b = document.getElementById("burger"), n = document.getElementById("nav");
   if (b && n) {
-    function set(o){n.classList.toggle("open", o);b.setAttribute("aria-expanded", o)}
+    function set(o){
+      n.classList.toggle("open", o);
+      b.setAttribute("aria-expanded", o ? "true" : "false");
+      b.setAttribute("aria-label", o ? "Loka valmynd" : "Opna valmynd");
+    }
     b.addEventListener("click", function(){set(!n.classList.contains("open"))});
     n.addEventListener("click", function(e){if(e.target.tagName === "A") set(false)});
   }
@@ -20,50 +24,61 @@
     var err = document.getElementById("formerr");
     var msg = document.getElementById("formmsg");
     if (err) { err.hidden = true; err.textContent = ""; }
-    if (msg) msg.hidden = true;
-    var problems = [];
+    if (msg) { msg.hidden = true; msg.textContent = ""; }
+    var honey = form.querySelector("[name=vefur]");
+    if (honey && honey.value) return;
+    var missing = [];
     function need(id, label){
       var el = document.getElementById(id);
       if (!el) return;
       var ok = String(el.value || "").trim().length > 0;
       el.setAttribute("aria-invalid", ok ? "false" : "true");
-      if (!ok) problems.push(label);
+      if (!ok) missing.push(label);
     }
     need("nafn", "fullt nafn");
     var email = document.getElementById("netfang");
-    var emailOk = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    var emailValue = email ? email.value.trim() : "";
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
     if (email) email.setAttribute("aria-invalid", emailOk ? "false" : "true");
-    if (!emailOk) problems.push("netfang");
+    if (!emailValue) missing.push("netfang");
+    else if (!emailOk) missing.push("gilt netfang");
     need("simi", "símanúmer");
-    need("tegund", "tegund framkvæmdar");
-    need("stadur", "staðsetning");
-    need("lysing", "lýsing");
+    need("tegund", "tegund verkefnis");
+    need("stadur", "staðsetningu");
+    need("lysing", "lýsingu");
+    var notes = [];
     var files = document.getElementById("skrar");
     if (files && files.files) {
       var allowed = {"image/jpeg":1,"image/png":1,"image/webp":1,"application/pdf":1};
-      if (files.files.length > 5) problems.push("mest 5 skrár");
+      var badType = false, badSize = false;
+      if (files.files.length > 5) notes.push("Mest má hlaða upp fimm skrám.");
       for (var i = 0; i < files.files.length; i++) {
         var f = files.files[i];
-        if (!allowed[f.type]) problems.push("einungis JPG, PNG, WEBP eða PDF");
-        if (f.size > 10 * 1024 * 1024) problems.push("hver skrá mest 10 MB");
+        if (!allowed[f.type]) badType = true;
+        if (f.size > 10 * 1024 * 1024) badSize = true;
       }
+      if (badType) notes.push("Aðeins má hlaða upp JPG, PNG, WEBP eða PDF.");
+      if (badSize) notes.push("Hver skrá má vera mest 10 MB.");
     }
-    var honey = form.querySelector("[name=vefur]");
-    if (honey && honey.value) problems.push("beiðni");
-    if (problems.length) {
+    if (missing.length || notes.length) {
       if (err) {
         err.hidden = false;
-        err.textContent = "Vantar: " + problems.filter(function(v,i,a){return a.indexOf(v)===i;}).join(", ") + ".";
+        var text = notes.slice();
+        if (missing.length) text.unshift("Vantar " + joinOg(missing) + ".");
+        err.textContent = text.join(" ");
       }
       var first = form.querySelector("[aria-invalid=true]");
       if (first) first.focus();
       return;
     }
-    if (msg) {
-      msg.hidden = false;
-      msg.textContent = "Beiðnin var ekki send. Móttaka fyrirspurna er ekki tengd enn.";
-    }
+    /* Móttaka er ekki tengd. Ekki sýna staðfestingu og ekki útskýra tenginguna á síðunni. Sjá OWNER-TODO.md */
   });
+
+  function joinOg(list){
+    if (list.length < 2) return list.join("");
+    if (list.length === 2) return list[0] + " og " + list[1];
+    return list.slice(0, -1).join(", ") + " og " + list[list.length - 1];
+  }
 
   function animateCount(el){
     var target = Number(el.getAttribute("data-count-to"));
@@ -141,7 +156,7 @@
       }).addTo(map);
       var icon = L.divIcon({className:"pin", html:"<span></span>", iconSize:[18,18], iconAnchor:[9,9], popupAnchor:[0,-12]});
       JARN_PROJECTS.forEach(function(p){
-        var html = '<div class="map-pop"><span class="tag">Dæmi</span><strong>' + esc(p.title) + "</strong><p>" + esc(p.text) + '</p><div class="map-photo">Mynd kemur</div></div>';
+        var html = '<div class="map-pop"><span class="tag">Dæmi</span><strong>' + esc(p.title) + "</strong><p>" + esc(p.text) + "</p></div>";
         L.marker([p.lat, p.lng], {icon:icon, title:p.title}).addTo(map).bindPopup(html, {maxWidth:280});
       });
       var shield = document.getElementById("map-shield");
@@ -219,7 +234,9 @@
       if (toggle) {
         var showToggle = q === "1" || (season && q !== "0" && !reduced);
         toggle.hidden = !showToggle;
-        toggle.textContent = on ? "Slökkva á snjó" : "Kveikja á snjó";
+        var snowLabel = on ? "Slökkva á snjó" : "Kveikja á snjó";
+        toggle.textContent = snowLabel;
+        toggle.setAttribute("aria-label", snowLabel);
         toggle.setAttribute("aria-pressed", on ? "true" : "false");
       }
       stopSnow();

@@ -4,25 +4,25 @@
 var JARN_PROJECTS = [
   {
     title: "Dæmi – lagnir í Kópavogi",
-    text: "Dæmi um mokstur í kringum lagnir fyrir veitufyrirtæki. Þetta er ekki unnið verk.",
+    text: "Dæmi um mokstur í kringum lagnir fyrir veitufyrirtæki.",
     lat: 64.099,
     lng: -21.908
   },
   {
     title: "Dæmi – húsgrunnur í Grafarvogi",
-    text: "Dæmi um undirbúning fyrir húsgrunn. Staðurinn er aðeins til sýnis.",
+    text: "Dæmi um undirbúning fyrir húsgrunn.",
     lat: 64.136,
     lng: -21.778
   },
   {
     title: "Dæmi – jarðvegsþjónusta í Hafnarfirði",
-    text: "Dæmi um almenna jarðvegsþjónustu. Enginn verkkaupi er tilgreindur.",
+    text: "Dæmi um jarðvegsþjónustu.",
     lat: 64.068,
     lng: -21.956
   },
   {
     title: "Dæmi – drenlagnir í Garðabæ",
-    text: "Dæmi um drenlagnir við hús. Mynd og verkkaupi koma síðar.",
+    text: "Dæmi um drenlagnir við hús.",
     lat: 64.091,
     lng: -21.927
   },
@@ -34,7 +34,7 @@ var JARN_PROJECTS = [
   },
   {
     title: "Dæmi – pallur í Reykjavík",
-    text: "Dæmi um mokstur fyrir palla. Staðsetningin er ekki raunverulegt verk.",
+    text: "Dæmi um mokstur fyrir pall.",
     lat: 64.142,
     lng: -21.895
   }
