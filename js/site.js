@@ -1,78 +1,28 @@
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   var header = document.querySelector("body > header");
-  if (header) {
-    var onScroll = function(){ header.classList.toggle("is-scrolled", window.scrollY > 24); };
-    onScroll();
-    window.addEventListener("scroll", onScroll, {passive:true});
+  var burger = document.getElementById("burger");
+  var nav = document.getElementById("nav");
+  if (burger && nav) {
+    function setOpen(open){
+      nav.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      burger.setAttribute("aria-label", open ? "Loka valmynd" : "Opna valmynd");
+    }
+    burger.addEventListener("click", function(){ setOpen(!nav.classList.contains("open")); });
+    nav.addEventListener("click", function(e){ if (e.target.closest("a")) setOpen(false); });
   }
 
-  var b = document.getElementById("burger"), n = document.getElementById("nav");
-  if (b && n) {
-    function set(o){
-      n.classList.toggle("open", o);
-      b.setAttribute("aria-expanded", o ? "true" : "false");
-      b.setAttribute("aria-label", o ? "Loka valmynd" : "Opna valmynd");
-    }
-    b.addEventListener("click", function(){set(!n.classList.contains("open"))});
-    n.addEventListener("click", function(e){if(e.target.tagName === "A") set(false)});
-  }
-  var form = document.getElementById("tilbod");
-  if (form) form.addEventListener("submit", function(e){
-    e.preventDefault();
-    var err = document.getElementById("formerr");
-    var msg = document.getElementById("formmsg");
-    if (err) { err.hidden = true; err.textContent = ""; }
-    if (msg) { msg.hidden = true; msg.textContent = ""; }
-    var honey = form.querySelector("[name=vefur]");
-    if (honey && honey.value) return;
-    var missing = [];
-    function need(id, label){
-      var el = document.getElementById(id);
-      if (!el) return;
-      var ok = String(el.value || "").trim().length > 0;
-      el.setAttribute("aria-invalid", ok ? "false" : "true");
-      if (!ok) missing.push(label);
-    }
-    need("nafn", "fullt nafn");
-    var email = document.getElementById("netfang");
-    var emailValue = email ? email.value.trim() : "";
-    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
-    if (email) email.setAttribute("aria-invalid", emailOk ? "false" : "true");
-    if (!emailValue) missing.push("netfang");
-    else if (!emailOk) missing.push("gilt netfang");
-    need("simi", "símanúmer");
-    need("tegund", "tegund verkefnis");
-    need("stadur", "staðsetningu");
-    need("lysing", "lýsingu");
-    var notes = [];
-    var files = document.getElementById("skrar");
-    if (files && files.files) {
-      var allowed = {"image/jpeg":1,"image/png":1,"image/webp":1,"application/pdf":1};
-      var badType = false, badSize = false;
-      if (files.files.length > 5) notes.push("Mest má hlaða upp fimm skrám.");
-      for (var i = 0; i < files.files.length; i++) {
-        var f = files.files[i];
-        if (!allowed[f.type]) badType = true;
-        if (f.size > 10 * 1024 * 1024) badSize = true;
-      }
-      if (badType) notes.push("Aðeins má hlaða upp JPG, PNG, WEBP eða PDF.");
-      if (badSize) notes.push("Hver skrá má vera mest 10 MB.");
-    }
-    if (missing.length || notes.length) {
-      if (err) {
-        err.hidden = false;
-        var text = notes.slice();
-        if (missing.length) text.unshift("Vantar " + joinOg(missing) + ".");
-        err.textContent = text.join(" ");
-      }
-      var first = form.querySelector("[aria-invalid=true]");
-      if (first) first.focus();
-      return;
-    }
-    /* Móttaka er ekki tengd. Ekki sýna staðfestingu og ekki útskýra tenginguna á síðunni. Sjá OWNER-TODO.md */
-  });
+  var TYPES = {
+    lagna: "Lagnaþjónusta í jörðu",
+    jardvegur: "Jarðvegsþjónusta",
+    yfirbord: "Yfirborðsfrágangur",
+    husgrunnar: "Húsgrunnar",
+    dren: "Drenlagnir",
+    pallar: "Mokstur fyrir palla",
+    snjor: "Snjóþjónusta",
+    annad: "Annað"
+  };
 
   function joinOg(list){
     if (list.length < 2) return list.join("");
@@ -80,32 +30,109 @@
     return list.slice(0, -1).join(", ") + " og " + list[list.length - 1];
   }
 
-  function animateCount(el){
-    var target = Number(el.getAttribute("data-count-to"));
-    if (!isFinite(target)) return;
-    if (reduce) return;
-    var start = performance.now(), dur = 900;
-    el.textContent = "0";
-    function tick(now){
-      var t = Math.min(1, (now - start) / dur);
-      var eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = String(t < 1 ? Math.round(target * eased) : target);
-      if (t < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+  function preselect(form){
+    var key = new URLSearchParams(location.search).get("tegund");
+    var select = form.querySelector("[name=tegund]");
+    if (key && select && TYPES[key]) select.value = key;
   }
-  var counts = document.querySelectorAll("[data-count-to]");
-  if (counts.length && "IntersectionObserver" in window) {
-    var cio = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (!en.isIntersecting) return;
-        animateCount(en.target);
-        cio.unobserve(en.target);
+
+  document.querySelectorAll("form.quote").forEach(function(form){
+    preselect(form);
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      submitQuote(form);
+    });
+  });
+
+  function submitQuote(form){
+    var err = form.querySelector(".form-error");
+    var okBox = form.querySelector(".success");
+    var button = form.querySelector("[type=submit]");
+    if (err) { err.hidden = true; err.textContent = ""; }
+    var honey = form.querySelector("[name=vefur]");
+    if (honey && honey.value) {
+      showError(form, err, "Beiðnin var ekki send.");
+      return;
+    }
+    var missing = [];
+    function need(name, label){
+      var el = form.querySelector("[name=" + name + "]");
+      if (!el) return;
+      var good = String(el.value || "").trim().length > 0;
+      el.setAttribute("aria-invalid", good ? "false" : "true");
+      if (!good) missing.push(label);
+    }
+    need("nafn", "fullt nafn");
+    var email = form.querySelector("[name=netfang]");
+    var emailValue = email ? email.value.trim() : "";
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
+    if (email) email.setAttribute("aria-invalid", emailOk ? "false" : "true");
+    if (!emailValue) missing.push("netfang");
+    else if (!emailOk) missing.push("gilt netfang");
+    need("simi", "símanúmer");
+    need("stadur", "staðsetningu");
+    need("tegund", "tegund verkefnis");
+    need("lysing", "lýsingu");
+    var notes = [];
+    var files = form.querySelector("[name=skrar]");
+    if (files && files.files) {
+      var allowed = {"image/jpeg":1,"image/png":1,"image/webp":1,"application/pdf":1};
+      var badType = false, badSize = false;
+      if (files.files.length > 5) notes.push("Mest má hlaða upp fimm skrám.");
+      for (var i = 0; i < files.files.length; i++) {
+        var f = files.files[i];
+        if (f.type && !allowed[f.type]) badType = true;
+        if (f.size > 10 * 1024 * 1024) badSize = true;
+      }
+      if (badType) notes.push("Aðeins má hlaða upp JPG, PNG, WEBP eða PDF.");
+      if (badSize) notes.push("Hver skrá má vera mest 10 MB.");
+    }
+    if (missing.length || notes.length) {
+      var text = notes.slice();
+      if (missing.length) text.unshift("Vantar " + joinOg(missing) + ".");
+      showError(form, err, text.join(" "));
+      var first = form.querySelector("[aria-invalid=true]");
+      if (first) first.focus();
+      return;
+    }
+    if (button) { button.disabled = true; button.setAttribute("aria-busy", "true"); }
+    fetch(form.action || "/api/tilbod", { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" } })
+      .then(function(res){
+        return res.json().catch(function(){ return null; }).then(function(data){
+          return { status: res.status, data: data };
+        });
+      })
+      .then(function(result){
+        if (result.data && result.data.ok === true && result.status >= 200 && result.status < 300) {
+          if (okBox) okBox.hidden = false;
+          var fields = form.querySelector(".fields");
+          var intro = form.querySelector(".form-intro");
+          var privacy = form.querySelector(".privacy");
+          if (fields) fields.hidden = true;
+          if (intro) intro.hidden = true;
+          if (privacy) privacy.hidden = true;
+          if (button) button.hidden = true;
+          if (okBox) okBox.focus();
+          return;
+        }
+        var message = result.data && result.data.error
+          ? result.data.error
+          : "Beiðnin var ekki send. Móttaka tilboða er ekki virk.";
+        showError(form, err, message);
+      })
+      .catch(function(){
+        showError(form, err, "Beiðnin var ekki send. Móttaka tilboða er ekki virk.");
+      })
+      .then(function(){
+        if (button) { button.disabled = false; button.removeAttribute("aria-busy"); }
       });
-    }, {threshold: 0.45});
-    counts.forEach(function(el){ cio.observe(el); });
-  } else {
-    counts.forEach(animateCount);
+  }
+
+  function showError(form, err, message){
+    if (!err) return;
+    err.hidden = false;
+    err.textContent = message;
+    err.focus();
   }
 
   if (window.JARN_CLIENTS) {
@@ -119,91 +146,74 @@
     });
   }
 
-  if (!reduce && "IntersectionObserver" in window) {
-    var items = document.querySelectorAll("main > section:not(.hero), .card, .proj, .eq, .page-head, .team-card, .client");
-    var rio = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (!en.isIntersecting) return;
-        en.target.classList.add("in");
-        rio.unobserve(en.target);
+  var listEl = document.getElementById("verkefni-list");
+  if (listEl && window.JARN_PROJECTS && JARN_PROJECTS.length) renderProjects(listEl);
+
+  var verkRoot = document.getElementById("verk-root");
+  if (verkRoot && window.JARN_PROJECTS) renderVerk(verkRoot);
+
+  function published(){
+    return (window.JARN_PROJECTS || []).filter(function(p){ return p && p.published && p.slug && p.title; });
+  }
+
+  function renderProjects(root){
+    var items = published();
+    if (!items.length) return;
+    var types = [];
+    items.forEach(function(p){ if (p.type && types.indexOf(p.type) < 0) types.push(p.type); });
+    var filterHtml = "";
+    if (types.length > 1) {
+      filterHtml = '<div class="filters" role="group" aria-label="Sía verkefni"><button type="button" class="btn btn-ghost" aria-pressed="true" data-filter="">Öll</button>' +
+        types.map(function(t){ return '<button type="button" class="btn btn-ghost" aria-pressed="false" data-filter="' + esc(t) + '">' + esc(labelFor(t)) + '</button>'; }).join("") +
+        "</div>";
+    }
+    function cards(filter){
+      return '<ul class="proj-list">' + items.filter(function(p){ return !filter || p.type === filter; }).map(function(p){
+        var img = (p.images && p.images[0]) ? '<img src="' + esc(p.images[0].src) + '" alt="' + esc(p.images[0].alt || p.title) + '" width="800" height="500" loading="lazy">' : "";
+        return '<li><article><h3><a href="/verkefni/verk/?id=' + encodeURIComponent(p.slug) + '">' + esc(p.title) + '</a></h3><p>' + esc(p.text || "") + '</p>' + img + '</article></li>';
+      }).join("") + "</ul>";
+    }
+    root.hidden = false;
+    root.innerHTML = filterHtml + cards("");
+    root.querySelectorAll("[data-filter]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        root.querySelectorAll("[data-filter]").forEach(function(b){ b.setAttribute("aria-pressed", "false"); });
+        btn.setAttribute("aria-pressed", "true");
+        var ul = root.querySelector(".proj-list");
+        if (ul) ul.outerHTML = cards(btn.getAttribute("data-filter"));
       });
-    }, {threshold: 0.14, rootMargin: "0px 0px -6% 0px"});
-    items.forEach(function(el){
-      var r = el.getBoundingClientRect();
-      el.classList.add("reveal");
-      if (r.top < window.innerHeight * 0.94 && r.bottom > 0) el.classList.add("in");
-      else rio.observe(el);
     });
   }
 
-  var mapEl = document.getElementById("verkefni-map");
-  if (mapEl && window.JARN_PROJECTS) {
-    var mapStarted = false;
-    function initMap(){
-      if (mapStarted || !window.L) return;
-      mapStarted = true;
-      var map = L.map(mapEl, {
-        scrollWheelZoom: false,
-        dragging: false,
-        touchZoom: false,
-        doubleClickZoom: false,
-        boxZoom: false,
-        keyboard: false
-      }).setView([64.12, -21.9], 11);
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 18,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(map);
-      var icon = L.divIcon({className:"pin", html:"<span></span>", iconSize:[18,18], iconAnchor:[9,9], popupAnchor:[0,-12]});
-      JARN_PROJECTS.forEach(function(p){
-        var html = '<div class="map-pop"><span class="tag">Dæmi</span><strong>' + esc(p.title) + "</strong><p>" + esc(p.text) + "</p></div>";
-        L.marker([p.lat, p.lng], {icon:icon, title:p.title}).addTo(map).bindPopup(html, {maxWidth:280});
-      });
-      var shield = document.getElementById("map-shield");
-      function activate(e){
-        if (e) e.preventDefault();
-        map.dragging.enable();
-        map.touchZoom.enable();
-        map.scrollWheelZoom.disable();
-        if (shield) shield.hidden = true;
-        setTimeout(function(){ map.invalidateSize(); }, 60);
-      }
-      if (shield) shield.addEventListener("click", activate);
-      setTimeout(function(){ map.invalidateSize(); }, 200);
-    }
-    function loadMap(){
-      if (window.L) { initMap(); return; }
-      if (mapEl.dataset.loading === "1") return;
-      mapEl.dataset.loading = "1";
-      var link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css";
-      document.head.appendChild(link);
-      var s = document.createElement("script");
-      s.src = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js";
-      s.onload = initMap;
-      document.body.appendChild(s);
-    }
-    if ("IntersectionObserver" in window) {
-      var mio = new IntersectionObserver(function(entries){
-        if (entries.some(function(en){ return en.isIntersecting; })) {
-          loadMap();
-          mio.disconnect();
-        }
-      }, {rootMargin: "240px"});
-      mio.observe(mapEl);
-    } else {
-      loadMap();
-    }
+  function renderVerk(root){
+    var id = new URLSearchParams(location.search).get("id");
+    var item = published().filter(function(p){ return p.slug === id; })[0];
+    if (!item) return;
+    var related = published().filter(function(p){ return p.slug !== item.slug && p.type && p.type === item.type; }).slice(0, 3);
+    var gallery = (item.images || []).map(function(img){
+      return '<img src="' + esc(img.src) + '" alt="' + esc(img.alt || item.title) + '" width="' + (img.w || 1200) + '" height="' + (img.h || 800) + '" loading="lazy">';
+    }).join("");
+    var relatedHtml = related.length ? '<h2>Tengd verkefni</h2><ul class="proj-list">' + related.map(function(p){
+      return '<li><a href="/verkefni/verk/?id=' + encodeURIComponent(p.slug) + '">' + esc(p.title) + '</a></li>';
+    }).join("") + "</ul>" : "";
+    document.title = item.title + " | Járn verktakar ehf.";
+    root.innerHTML = '<p class="kicker">' + esc(labelFor(item.type)) + '</p><h2>' + esc(item.title) + '</h2><p>' + esc(item.text || "") + '</p>' +
+      (gallery ? '<div class="gallery">' + gallery + '</div>' : '') +
+      relatedHtml +
+      '<p><a class="btn" href="/hafa-samband/?tegund=' + encodeURIComponent(item.type || "") + '#tilbod">Óska eftir tilboði</a></p>';
   }
 
+  function labelFor(type){ return TYPES[type] || type || ""; }
+
   function esc(s){
-    return String(s).replace(/[&<>"']/g, function(c){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
       return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
     });
   }
 
-  if (location.pathname === "/" || location.pathname === "/index.html") initSnow(reduce);
+  if ((location.pathname === "/" || location.pathname === "/index.html") && document.getElementById("snow-banner")) {
+    initSnow(reduce);
+  }
 
   function icelandMonth(){
     try {
@@ -216,7 +226,7 @@
   function initSnow(reduced){
     var q = new URLSearchParams(location.search).get("snow");
     var month = icelandMonth();
-    var season = month === 11 || month === 12 || month === 1 || month === 2 || month === 3;
+    var season = month >= 11 || month <= 3;
     var saved = null;
     try { saved = localStorage.getItem("jarn-snow"); } catch (e) {}
     var on;
@@ -224,11 +234,9 @@
     else if (q === "0" || reduced) on = false;
     else if (!season) on = false;
     else on = saved !== "off";
-
     var banner = document.getElementById("snow-banner");
     var toggle = document.getElementById("snow-toggle");
     var stopSnow = function(){};
-
     function paint(){
       if (banner) banner.hidden = !on;
       if (toggle) {
@@ -240,7 +248,11 @@
         toggle.setAttribute("aria-pressed", on ? "true" : "false");
       }
       stopSnow();
-      if (on) stopSnow = startSnow();
+      if (on) {
+        var start = function(){ stopSnow = startSnow(); };
+        if ("requestIdleCallback" in window) requestIdleCallback(start, {timeout: 2000});
+        else setTimeout(start, 1200);
+      }
     }
     paint();
     if (toggle) toggle.addEventListener("click", function(){
@@ -259,34 +271,22 @@
     var flakes = [];
     var running = true;
     var raf = 0;
-    function size(){
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+    function size(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     size();
     var onResize = function(){ size(); };
     window.addEventListener("resize", onResize);
-    var count = Math.max(24, Math.min(70, Math.round(window.innerWidth / 22)));
+    var count = Math.max(18, Math.min(48, Math.round(window.innerWidth / 28)));
     for (var i = 0; i < count; i++) {
-      flakes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.6 + 0.5,
-        s: Math.random() * 0.55 + 0.25,
-        d: Math.random() * 0.35 - 0.15
-      });
+      flakes.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.4 + 0.4, s: Math.random() * 0.45 + 0.2, d: Math.random() * 0.3 - 0.15 });
     }
     function frame(){
       if (!running) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "rgba(255,255,255,.8)";
+      ctx.fillStyle = "rgba(255,255,255,.75)";
       for (var i = 0; i < flakes.length; i++) {
         var f = flakes[i];
-        ctx.beginPath();
-        ctx.arc(f.x, f.y, f.r, 0, 6.2832);
-        ctx.fill();
-        f.y += f.s;
-        f.x += f.d;
+        ctx.fillRect(f.x, f.y, f.r, f.r);
+        f.y += f.s; f.x += f.d;
         if (f.y > canvas.height + 4) { f.y = -4; f.x = Math.random() * canvas.width; }
         if (f.x > canvas.width) f.x = 0;
         else if (f.x < 0) f.x = canvas.width;
@@ -294,13 +294,8 @@
       raf = requestAnimationFrame(frame);
     }
     function onVis(){
-      if (document.hidden) {
-        running = false;
-        cancelAnimationFrame(raf);
-      } else if (canvas.isConnected) {
-        running = true;
-        frame();
-      }
+      if (document.hidden) { running = false; cancelAnimationFrame(raf); }
+      else if (canvas.isConnected) { running = true; frame(); }
     }
     document.addEventListener("visibilitychange", onVis);
     frame();

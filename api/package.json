@@ -1,0 +1,13 @@
+{
+  "name": "jarnverk-quote",
+  "private": true,
+  "description": "Quote intake for Járn verktakar. Does not report success unless SMTP accepts the message.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "nodemailer": "6.10.1"
+  }
+}

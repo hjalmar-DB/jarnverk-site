@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<script>
+(function(){
+  var h=location.hostname;
+  if(h==="jarnverktakar.is"||h==="www.jarnverktakar.is"||h==="www.jarnverk.is"){
+    location.replace("https://jarnverk.is"+location.pathname+location.search+location.hash);
+  }
+})();
+</script>
+<script>
+(function(){
+  var map={"#thjonusta":"/thjonusta/","#verkefni":"/verkefni/","#taeki":"/taekjakostur/","#um-okkur":"/um-okkur/","#hafa-samband":"/hafa-samband/","#tilbod":"/hafa-samband/#tilbod"};
+  var path=location.pathname;
+  if((path==="/"||path==="/index.html")&&map[location.hash]) location.replace(map[location.hash]);
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verkefni | Járn verktakar ehf.</title>
+<link rel="canonical" href="https://jarnverk.is/verkefni/verk/">
+<link rel="icon" href="/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/logo/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/img/logo/apple-touch-icon.png">
+<meta name="description" content="Verkefni Járn verktaka ehf. Óskaðu eftir tilboði í jarðvinnu og lagnaþjónustu.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="is_IS">
+<meta property="og:site_name" content="Járn verktakar ehf.">
+<meta property="og:title" content="Verkefni | Járn verktakar ehf.">
+<meta property="og:description" content="Verkefni Járn verktaka ehf. Óskaðu eftir tilboði í jarðvinnu og lagnaþjónustu.">
+<meta property="og:url" content="https://jarnverk.is/verkefni/verk/">
+<meta property="og:image" content="https://jarnverk.is/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="preload" href="/fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"GeneralContractor","name":"Járn verktakar ehf.","taxID":"650914-0660","url":"https://jarnverk.is","address":{"@type":"PostalAddress","streetAddress":"Ármúli 24","postalCode":"108","addressLocality":"Reykjavík","addressCountry":"IS"}}
+</script>
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<a class="skip" href="#efni">Fara í efni</a>
+<div class="draft" role="region" aria-label="Drög"><p>Drög &middot; Hugmyndakynning fyrir Járn verktaka ehf. &middot; Texti og myndir eru dæmi</p></div>
+<header>
+  <div class="wrap bar">
+    <a href="/" class="logo" aria-label="Járn verktakar – forsíða">
+      <img src="/img/logo/logo-horizontal-on-dark.svg" alt="Járn" width="177" height="56">
+    </a>
+    <button type="button" class="burger" id="burger" aria-label="Opna valmynd" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Aðalvalmynd">
+      <ul>
+        <li><a class="nl" href="/">Forsíða</a></li>
+        <li><a class="nl" href="/thjonusta/">Þjónusta</a></li>
+        <li><a class="nl" href="/verkefni/" aria-current="page">Verkefni</a></li>
+        <li><a class="nl" href="/um-okkur/">Um okkur</a></li>
+        <li><a class="nl" href="/hafa-samband/">Hafa samband</a></li>
+        <li><a class="btn" href="/hafa-samband/#tilbod">Óska eftir tilboði</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="efni">
+
+<div class="page-head"><div class="wrap"><p class="kicker">Verkefni</p><h1>Verk</h1></div></div>
+<section>
+  <div class="wrap" id="verk-root">
+    <p>Ekkert verkefni er valið.</p>
+    <p><a class="text-link" href="/verkefni/">Til baka í verkefni</a></p>
+    <p><a class="btn" href="/hafa-samband/#tilbod">Óska eftir tilboði</a></p>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="/" class="logo"><img src="/img/logo/logo-horizontal-on-dark.svg" alt="Járn" width="177" height="56"></a>
+        <p>Járn verktakar ehf.</p>
+        <p>Við leggjum grunninn.</p>
+      </div>
+      <div>
+        <p class="foot-title">Þjónusta</p>
+        <ul>
+          <li><a href="/thjonusta/#lagna-thjonusta">Lagnaþjónusta</a></li>
+          <li><a href="/thjonusta/#jardvegsthjonusta">Jarðvegsþjónusta</a></li>
+          <li><a href="/thjonusta/#husgrunnar">Húsgrunnar</a></li>
+          <li><a href="/thjonusta/#drenlagnir">Drenlagnir</a></li>
+          <li><a href="/thjonusta/#snjothjonusta">Snjóþjónusta</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-title">Upplýsingar</p>
+        <ul>
+          <li><a href="/um-okkur/">Um okkur</a></li>
+          <li><a href="/verkefni/">Verkefni</a></li>
+          <li><a href="/taekjakostur/">Tækjakostur</a></li>
+          <li><a href="/hafa-samband/">Hafa samband</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-title">Samband</p>
+        <p>Ármúli 24<br>108 Reykjavík<br>Kennitala 650914-0660<br><a href="https://jarnverk.is">jarnverk.is</a></p>
+      </div>
+    </div>
+    <div class="legal"><span>&copy; 2026 Járn verktakar ehf. &middot; jarnverk.is</span><span>Drög – hugmyndakynning</span></div>
+  </div>
+</footer>
+<script src="/js/projects.js" defer></script>
+<script src="/js/site.js" defer></script>
+<nav class="dock" aria-label="Flýtileiðir"><a class="btn" href="/hafa-samband/#tilbod">Óska eftir tilboði</a></nav>
+</body>
+</html>

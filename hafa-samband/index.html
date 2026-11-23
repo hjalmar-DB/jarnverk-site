@@ -34,118 +34,86 @@
 <meta property="og:image" content="https://jarnverk.is/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<link rel="preload" href="/fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"GeneralContractor","name":"Járn verktakar ehf.","taxID":"650914-0660","url":"https://jarnverk.is","address":{"@type":"PostalAddress","streetAddress":"Ármúli 24","postalCode":"108","addressLocality":"Reykjavík","addressCountry":"IS"}}
 </script>
 <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
-<script>document.documentElement.classList.add("js")</script>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="i-dig" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter"><path d="M6 40h18"/><path d="M10 40V28l12-14 10 6"/><path d="M32 20l8 10-6 8h-8"/><path d="M34 38l6-8"/></symbol>
-    <symbol id="i-clear" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"><path d="M6 36h36"/><path d="M10 36V24h14l6-8h10v20"/><path d="M6 42h8M18 42h8M30 42h12"/></symbol>
-    <symbol id="i-level" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"><path d="M4 30h40"/><path d="M4 38h40"/><path d="M12 22l12-10 12 10"/><path d="M24 12v18"/></symbol>
-    <symbol id="i-trench" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 14h12l4 22h8l4-22h12"/><path d="M20 36v0M28 36v0"/><path d="M4 42h40"/></symbol>
-    <symbol id="i-rock" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter"><path d="M6 38l8-14 8 6 8-16 12 24z"/><path d="M24 4v10M18 8l6 6 6-6"/></symbol>
-    <symbol id="i-drain" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 16h40v10H4z"/><path d="M12 26v6M24 26v10M36 26v6"/><path d="M8 42h6M20 42h8M34 42h6"/></symbol>
-    <symbol id="i-snow" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"><path d="M6 34h36"/><path d="M10 34l6-14h16l6 14"/><path d="M16 20l4-8h8l4 8"/><path d="M8 40h8M20 40h8M32 40h8"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M3 5h18v14H3z"/><path d="M3 6l9 8 9-8"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.500 7 12 7 12z"/><circle cx="12" cy="10" r="2.500"/></symbol>
-    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="square"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
-  </defs>
-</svg>
-
-<div class="draft"><p>Drög &middot; Hugmyndakynning fyrir Járn verktaka ehf. &middot; Texti og myndir eru dæmi</p></div>
-
+<a class="skip" href="#efni">Fara í efni</a>
+<div class="draft" role="region" aria-label="Drög"><p>Drög &middot; Hugmyndakynning fyrir Járn verktaka ehf. &middot; Texti og myndir eru dæmi</p></div>
 <header>
   <div class="wrap bar">
     <a href="/" class="logo" aria-label="Járn verktakar – forsíða">
       <img src="/img/logo/logo-horizontal-on-dark.svg" alt="Járn" width="177" height="56">
     </a>
-    <button class="burger" id="burger" aria-label="Opna valmynd" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
+    <button type="button" class="burger" id="burger" aria-label="Opna valmynd" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
     <nav id="nav" aria-label="Aðalvalmynd">
       <ul>
         <li><a class="nl" href="/">Forsíða</a></li>
         <li><a class="nl" href="/thjonusta/">Þjónusta</a></li>
         <li><a class="nl" href="/verkefni/">Verkefni</a></li>
-        <li><a class="nl" href="/taekjakostur/">Tækjakostur</a></li>
         <li><a class="nl" href="/um-okkur/">Um okkur</a></li>
         <li><a class="nl" href="/hafa-samband/" aria-current="page">Hafa samband</a></li>
-        <li><a class="btn btn-primary" href="/hafa-samband/#tilbod">Fá tilboð <span aria-hidden="true">↗</span></a></li>
+        <li><a class="btn" href="/hafa-samband/#tilbod">Óska eftir tilboði</a></li>
       </ul>
     </nav>
   </div>
 </header>
+<main id="efni">
 
-<main>
-<div class="page-head">
-  <div class="wrap">
-    <div class="eyebrow">Járn verktakar</div>
-    <h1>Hafa samband</h1>
-  </div>
-  <div class="hero-stripe" aria-hidden="true"></div>
-</div>
-<section id="hafa-samband">
-  <div class="wrap">
-    <div class="eyebrow">Hafa samband</div>
-    <h2 class="sec-title">Fáðu tilboð í verkið</h2>
-    <p class="sec-lead">Segðu okkur frá verkefninu og við munum hafa samband til að fara yfir næstu skref.</p>
-
-    <div class="contact">
-      <!--
-        TODO: Tengja formið við móttöku (netfang eða þjónustu). Ekki senda fyrr en slóð er til. Sjá OWNER-TODO.md
-        Ekki birta: „Beiðnin er ekki send fyrr en móttaka hefur verið tengd.“
-        Ekki birta: „Skrárnar eru ekki sendar fyrr en móttaka er tengd.“
-        Ekki sýna „Takk fyrir“ fyrr en beiðni er raunverulega send.
-      -->
-      <form id="tilbod" action="" method="post" enctype="multipart/form-data" novalidate>
-        <h3>Beiðni um tilboð</h3>
-        <p>Reitir með stjörnu eru nauðsynlegir.</p>
+<div class="page-head"><div class="wrap"><p class="kicker">Járn verktakar</p><h1>Hafa samband</h1></div></div>
+<section>
+  <div class="wrap cta-grid">
+    <div>
+      <p>Segðu okkur frá verkefninu.</p>
+      <ul class="contact-list">
+        <li>Ármúli 24<br>108 Reykjavík</li>
+        <li>Kennitala 650914-0660</li>
+      </ul>
+    </div>
+    <form class="quote" id="tilbod" action="/api/tilbod" method="post" enctype="multipart/form-data" novalidate>
+        <h2>Beiðni um tilboð</h2>
+        <p class="form-intro">Reitir með stjörnu eru nauðsynlegir.</p>
+        <p class="form-error" role="alert" tabindex="-1" hidden></p>
         <p class="hp"><label for="vefur">Vefur</label><input id="vefur" name="vefur" type="text" tabindex="-1" autocomplete="off"></p>
         <div class="fields">
-          <div class="f"><label for="nafn">Fullt nafn *</label><input id="nafn" name="nafn" type="text" autocomplete="name" required></div>
-          <div class="f"><label for="fyrirtaeki">Fyrirtæki</label><input id="fyrirtaeki" name="fyrirtaeki" type="text" autocomplete="organization"></div>
-          <div class="f"><label for="netfang">Netfang *</label><input id="netfang" name="netfang" type="email" autocomplete="email" required></div>
-          <div class="f"><label for="simi">Símanúmer *</label><input id="simi" name="simi" type="tel" autocomplete="tel" required></div>
-          <div class="f"><label for="tegund">Tegund verkefnis *</label>
+          <div><label for="nafn">Fullt nafn *</label><input id="nafn" name="nafn" type="text" autocomplete="name" required></div>
+          <div><label for="fyrirtaeki">Fyrirtæki</label><input id="fyrirtaeki" name="fyrirtaeki" type="text" autocomplete="organization"></div>
+          <div><label for="netfang">Netfang *</label><input id="netfang" name="netfang" type="email" autocomplete="email" required></div>
+          <div><label for="simi">Símanúmer *</label><input id="simi" name="simi" type="tel" autocomplete="tel" required></div>
+          <div><label for="stadur">Staðsetning verkefnis *</label><input id="stadur" name="stadur" type="text" autocomplete="street-address" required></div>
+          <div><label for="tegund">Tegund verkefnis *</label>
             <select id="tegund" name="tegund" required>
               <option value="">Veldu tegund</option>
-              <option>Lagnaþjónusta í jörðu</option>
-              <option>Jarðvegsþjónusta</option>
-              <option>Yfirborðsfrágangur</option>
-              <option>Húsgrunnar</option>
-              <option>Drenlagnir</option>
-              <option>Mokstur fyrir palla</option>
-              <option>Snjóþjónusta</option>
-              <option>Annað</option>
-            </select></div>
-          <div class="f"><label for="stadur">Staðsetning verkefnis *</label><input id="stadur" name="stadur" type="text" autocomplete="street-address" required></div>
-          <div class="f"><label for="upphaf">Áætlaður upphafsdagur</label><input id="upphaf" name="upphaf" type="date"></div>
-          <div class="f full"><label for="lysing">Lýsing á verkefninu *</label><textarea id="lysing" name="lysing" required></textarea></div>
-          <div class="f full"><label for="skrar">Ljósmyndir, teikningar eða PDF</label><input id="skrar" name="skrar" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf" multiple><p class="hint">JPG, PNG, WEBP eða PDF. Mest fimm skrár og 10 MB á hverja skrá.</p></div>
+              <option value="lagna">Lagnaþjónusta í jörðu</option>
+              <option value="jardvegur">Jarðvegsþjónusta</option>
+              <option value="yfirbord">Yfirborðsfrágangur</option>
+              <option value="husgrunnar">Húsgrunnar</option>
+              <option value="dren">Drenlagnir</option>
+              <option value="pallar">Mokstur fyrir palla</option>
+              <option value="snjor">Snjóþjónusta</option>
+              <option value="annad">Annað</option>
+            </select>
+          </div>
+          <div><label for="upphaf">Áætlaður upphafsdagur</label><input id="upphaf" name="upphaf" type="date"></div>
+          <div class="full"><label for="lysing">Lýsing á verkefninu *</label><textarea id="lysing" name="lysing" required></textarea></div>
+          <div class="full"><label for="athugasemd">Athugasemd</label><textarea id="athugasemd" name="athugasemd"></textarea></div>
+          <div class="full"><label for="skrar">Ljósmyndir, teikningar eða PDF</label><input id="skrar" name="skrar" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf" multiple><p class="hint">JPG, PNG, WEBP eða PDF. Mest fimm skrár og 10 MB á hverja skrá.</p></div>
         </div>
-        <p class="form-error" id="formerr" role="alert" hidden></p>
-        <button class="btn btn-primary" type="submit">Senda beiðni <span aria-hidden="true">↗</span></button>
-        <p class="form-msg" id="formmsg" role="status" hidden></p>
+        <p class="privacy">Í beiðninni eru nafn, netfang, símanúmer, staðsetning, lýsing og þær skrár sem þú velur. Skrár eru ekki geymdar á vefnum. Beiðni er aðeins send þegar móttaka er virk.</p>
+        <button class="btn" type="submit">Óska eftir tilboði</button>
+        <div class="success" tabindex="-1" hidden>
+          <h3>Beiðnin er send</h3>
+          <p>Beiðnin hefur verið send.</p>
+        </div>
+        <noscript><p>Til að senda beiðni þarf vafrinn að keyra skriftu.</p></noscript>
       </form>
-      <div id="takk" hidden>
-        <h3>Takk fyrir fyrirspurnina</h3>
-        <p>Við höfum móttekið beiðnina og munum hafa samband eins fljótt og við getum.</p>
-      </div>
-
-      <aside class="info" aria-label="Heimilisfang og kennitala">
-        <div class="box"><span class="ico"><svg><use href="#i-pin"/></svg></span><div><h4>Heimilisfang</h4><p>Ármúli 24<br>108 Reykjavík</p></div></div>
-        <div class="box"><div><h4>Kennitala</h4><p>650914-0660</p></div></div>
-      </aside>
-    </div>
   </div>
 </section>
 </main>
-
 <footer>
   <div class="wrap">
     <div class="foot">
@@ -155,7 +123,7 @@
         <p>Við leggjum grunninn.</p>
       </div>
       <div>
-        <h5>Þjónusta</h5>
+        <p class="foot-title">Þjónusta</p>
         <ul>
           <li><a href="/thjonusta/#lagna-thjonusta">Lagnaþjónusta</a></li>
           <li><a href="/thjonusta/#jardvegsthjonusta">Jarðvegsþjónusta</a></li>
@@ -165,7 +133,7 @@
         </ul>
       </div>
       <div>
-        <h5>Upplýsingar</h5>
+        <p class="foot-title">Upplýsingar</p>
         <ul>
           <li><a href="/um-okkur/">Um okkur</a></li>
           <li><a href="/verkefni/">Verkefni</a></li>
@@ -174,15 +142,14 @@
         </ul>
       </div>
       <div>
-        <h5>Samband</h5>
-        <p>Ármúli 24<br>108 Reykjavík<br>kt. 650914-0660<br><a href="https://jarnverk.is">jarnverk.is</a></p>
+        <p class="foot-title">Samband</p>
+        <p>Ármúli 24<br>108 Reykjavík<br>Kennitala 650914-0660<br><a href="https://jarnverk.is">jarnverk.is</a></p>
       </div>
     </div>
     <div class="legal"><span>&copy; 2026 Járn verktakar ehf. &middot; jarnverk.is</span><span>Drög – hugmyndakynning</span></div>
   </div>
 </footer>
-
 <script src="/js/site.js" defer></script>
-<nav class="dock" aria-label="Flýtileiðir"><a class="btn btn-primary" href="/hafa-samband/#tilbod">Fá tilboð</a></nav>
+<nav class="dock" aria-label="Flýtileiðir"><a class="btn" href="/hafa-samband/#tilbod">Óska eftir tilboði</a></nav>
 </body>
 </html>
