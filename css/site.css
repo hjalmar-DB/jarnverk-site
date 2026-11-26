@@ -139,6 +139,9 @@ footer{border-top:6px solid var(--accent);padding:48px 0 28px;background:var(--b
 .foot a:hover{color:var(--accent)}
 .legal{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:14px}
 .credits{color:var(--muted);font-size:14px;margin:10px 0 0}
+.studio{margin:6px 0 0;color:var(--muted);font-family:var(--body);font-size:12.5px;line-height:1.45}
+.studio a{font-weight:600}
+.studio a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 
 .snow-banner{border-bottom:1px solid var(--line);padding:22px 0}
 .snow-banner-in{display:flex;justify-content:space-between;gap:20px;align-items:end;flex-wrap:wrap}
