@@ -177,6 +177,9 @@ footer{background:#0d0f11;border-top:6px solid var(--accent);padding:60px 0 28px
 .legal{margin-top:46px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#7d8791;font-size:13.5px}
 .credits{margin-top:10px;color:#6b747d;font-size:12.5px;line-height:1.55}
 .credits a{text-decoration:underline}
+.studio{margin:6px 0 0;color:#6b747d;font-family:var(--body);font-size:12.5px;line-height:1.45}
+.studio a{font-weight:600}
+.studio a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 
 /* responsive */
 @media (max-width:1060px){
