@@ -1,0 +1,37 @@
+# Render Blueprint for the jarnverk.is PREVIEW (jarnverk-preview, branch `endurbaetur`).
+# Render serves only ./public, filled by scripts/publish.mjs. *.md notes, api/ and config are not published.
+# The CSP allows the two inline scripts on each page by hash. If an inline <script> changes,
+# update its sha256 here, or the browser will block it.
+services:
+  - type: web
+    name: jarnverk-preview
+    runtime: static
+    branch: endurbaetur
+    buildCommand: node scripts/publish.mjs
+    staticPublishPath: public
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=63072000; includeSubDomains
+      - path: /*
+        name: Content-Security-Policy
+        value: "default-src 'self'; script-src 'self' 'sha256-tKHiEkGqi61ywbubAH2Bnn1E2yQwTgdKHkgLOM/CdVM=' 'sha256-cr/s94cCMn/3y++s+k+ySAAkTVY8Jwcs4fzudzNQqCU='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+      - path: /*
+        name: Cross-Origin-Opener-Policy
+        value: same-origin
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow
