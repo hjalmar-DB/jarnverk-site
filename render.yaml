@@ -1,0 +1,37 @@
+# Render Blueprint for the jarnverk.is LIVE site (jarnverk-site, branch `main`).
+# Render serves only ./public, filled by scripts/publish.mjs. *.md notes, api/ and config are not published.
+# The CSP allows the two inline scripts on each page by hash. If an inline <script> changes,
+# update its sha256 here, or the browser will block it.
+services:
+  - type: web
+    name: jarnverk-site
+    runtime: static
+    branch: main
+    buildCommand: node scripts/publish.mjs
+    staticPublishPath: public
+    pullRequestPreviewsEnabled: false
+    domains:
+      - jarnverk.is
+      - www.jarnverk.is
+    headers:
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=63072000; includeSubDomains
+      - path: /*
+        name: Content-Security-Policy
+        value: "default-src 'self'; script-src 'self' 'sha256-tKHiEkGqi61ywbubAH2Bnn1E2yQwTgdKHkgLOM/CdVM=' 'sha256-cr/s94cCMn/3y++s+k+ySAAkTVY8Jwcs4fzudzNQqCU=' 'sha256-qOhFsq0QMV2REqNwk5hGH5bZE9SkX6gt6yeyKdYPv+U=' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: https://tile.openstreetmap.org https://cdnjs.cloudflare.com; font-src 'self'; connect-src 'self'; form-action 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+      - path: /*
+        name: Cross-Origin-Opener-Policy
+        value: same-origin
